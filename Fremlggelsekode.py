@@ -31,17 +31,16 @@ wb.write(0, 2, "Timestamp")
 timer = 0
 timer3 = 0
 
+#Definere sensorene ud fra deres unikke ID
+sensor1 = W1ThermSensor(Sensor.DS18B20, "012275e4ad10")
+sensor2 = W1ThermSensor(Sensor.DS18B20, "012275b89bb2")
+
 #Bruger try, for at kunne afbryde programmet nemt med et KeyboardInterrupt
 try:
     while True:
         #Sørger for at programmet kun spytter data ud, hver halve minut
         if timer < 1:
-
                 row = row+1
-
-                #Definere sensorene ud fra deres unikke ID
-                sensor1 = W1ThermSensor(Sensor.DS18B20, "012275e4ad10")
-                sensor2 = W1ThermSensor(Sensor.DS18B20, "012275b89bb2")
 
                 #Får temperaturen, og laver dem til en variable jeg kan kalde på
                 temp1 = (sensor1.get_temperature())
